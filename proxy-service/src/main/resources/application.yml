@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: proxy-service
+
+eureka:
+  instance:
+    instance-id: proxy-microservice
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+
+hystrix:
+  command:
+    todos-proxy-service:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+    circuitBreaker:
+      requestVolumeThreshold: 4
+      errorThresholdPercentage: 50
+
+
+server:
+  port: 8082

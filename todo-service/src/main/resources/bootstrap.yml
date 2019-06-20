@@ -1,0 +1,48 @@
+# Servlet
+server:
+  port: 8081
+
+  servlet:
+    context-path: /api
+
+eureka:
+  instance:
+    instance-id: todo-service
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: todo-service
+  kafka:
+    bootstrap-servers: localhost:9092
+  datasource:
+    username: user
+    password: password
+
+  h2:
+    console:
+      path: /h2-console
+      settings:
+        trace: true
+      enabled: true
+  jpa:
+    show-sql: true
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+logging:
+  level:
+    root: warn
+    com.melardev: trace
+    org.springframework.web: debug
+    org.apache.kafka: trace
+
